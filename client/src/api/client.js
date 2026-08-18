@@ -2,7 +2,13 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 /** Single axios instance for the whole app. */
-const api = axios.create({ baseURL: '/api' });
+// const api = axios.create({ baseURL: '/api' });
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : '/api',
+});
+
 
 // Attach JWT on every request
 api.interceptors.request.use((config) => {
