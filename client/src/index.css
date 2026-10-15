@@ -8,12 +8,27 @@
   html {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+    /* Site-wide: this is a UI, not a document — no I-beam cursor or
+       text-selection flash when clicking anywhere (looks like a bug). */
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  /* Exception: form fields must stay editable/selectable. */
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
   }
   body {
     @apply bg-cream text-ink font-sans;
   }
   ::selection {
     @apply bg-brand-200 text-brand-900;
+  }
+  /* Buttons are controls, not text — no I-beam cursor or text selection on click */
+  button {
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
